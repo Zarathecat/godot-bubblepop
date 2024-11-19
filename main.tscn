@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://btld12jc46c7u"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_wl7ux"]
+[ext_resource type="PackedScene" uid="uid://klkxrb2o8n35" path="res://bubble.tscn" id="2_25n27"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_wl7ux")
+
+[node name="Bubble" parent="." instance=ExtResource("2_25n27")]
