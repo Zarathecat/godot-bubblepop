@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
-var score = 0
+#var score = 0
 
 var window_size = DisplayServer.window_get_size()
+
+signal bubble_pop
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,6 +13,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	#print(str(score))
 	
 func get_random_position(win_size):
 	var win_x = int(win_size[0])
@@ -24,4 +27,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton or event is InputEventScreenTouch:
 		print("Bubble popped!")
 		position = get_random_position(window_size)
-		score += 1
+		bubble_pop.emit()
+		
+func _on_timer_timeout() -> void:
+	position = get_random_position(window_size)

@@ -9,4 +9,4 @@ bubble_scene = ExtResource("2_25n27")
 
 [node name="Bubble" parent="." instance=ExtResource("2_25n27")]
 
-[connection signal="input_event" from="Bubble" to="." method="_on_bubble_input_event"]
+[connection signal="bubble_pop" from="Bubble" to="." method="_on_bubble_bubble_pop"]

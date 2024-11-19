@@ -4,6 +4,8 @@ extends Node
 
 var window_size = DisplayServer.window_get_size()
 
+var score = 0
+
 # I want a timer attached to each bubble, that moves it
 # when the time runs out. Not sure how to attach a timer to
 # a node like that, yet. Assume I make it a child of the bubble
@@ -24,8 +26,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print("Score: " + str($Bubble.score))
-	pass
+	# score is calculated per bubble, then combined!
+	print("Score: " + str(score))
 
 # For now, we make a few random bubbles at the start
 func generate_bubble():
@@ -42,3 +44,8 @@ func get_random_position(win_size):
 	var rand_pos_x = randi_range(0, win_size[0])
 	var rand_pos_y = randi_range(0, win_size[1])
 	return Vector2(rand_pos_x, rand_pos_y)
+
+# This doesn't work consistently and I have no idea why, yet.
+func _on_bubble_bubble_pop() -> void:
+	score+= 1
+	
