@@ -5,5 +5,8 @@
 
 [node name="Main" type="Node"]
 script = ExtResource("1_wl7ux")
+bubble_scene = ExtResource("2_25n27")
 
 [node name="Bubble" parent="." instance=ExtResource("2_25n27")]
+
+[connection signal="input_event" from="Bubble" to="." method="_on_bubble_input_event"]

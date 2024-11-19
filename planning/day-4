@@ -1,0 +1,57 @@
+DAY 4
+
+Today, I want to change it up. I'm going to try an android touchscreen
+game. I haven't tried any touchscreen games yet.
+
+Will keep the mechanics super simple. Bubbles will appear on the screen
+at random; player pops them by pressing them; each pop increases score.
+
+So we need:
+
+main
+colorrect
+bubbles (maybe rigid body 2d if I want them to move around later?)
+  - sprite2d
+
+not sure how to get them to react to user input, if I'm better off using
+inbuilt buttons. let's check the docs...
+
+ok, inputeventscreentouch, and it has a .position 
+
+so I think we may as well have rigidbody, but we won't be using it for
+now, we just need bubble.position and compare to
+inputeventscreentouch.position. So this *should* be easy, and the
+awkward part is going to be getting it onto a phone. I have
+this set up in advance, but I can't test it on my own phone, because
+it has too little memory. So I'll be waiting for someone else to lend
+me theirs for the purpose. So for now I guess I'll be simulating
+touchscreen event in whatever tools godot gives me to do so. let's find
+out!
+
+Okay yeah I can mock it in functions in the script if I need to do a
+dummy playthrough. map them to some other inputevent, I guess. Not
+great if I want to test the specifics, though. Guess I'll just wait.
+
+for now going to track position of events in rigidbody2d bubble.
+but there's also a touchscreenbutton class available; will switch
+to that if this causes me trouble. I think that's designed more for
+UI, so starting with this.
+
+wondered if there was a builtin for getting a random window position,
+since I use it all the time. Nope. I should move that function to
+a common godot helper library I import in each project, sometime.
+
+ah, so when we hit a bubble, it should move to another random position
+on the screen. each bubble also has its own timer, and when that hits
+0, the bubble moves to a new position. the timer is reset when the
+bubble moves.
+
+OH, HAH. Apparently you can't set hte position of a rigidbody. so I
+guess I need a different type of node, or a different gameplay
+mechanic (I hit this because I found the collisionshape2d didn't follow
+my sprite when I tried to set the position programmatically).
+
+changed it to characterbody2d. This feels silly, but it worked.
+
+Okay, got the basic mechanics and a score printed. Hacky implementation,
+but can make it prettier later.

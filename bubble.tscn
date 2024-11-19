@@ -7,10 +7,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_gok8g"]
 radius = 55.0091
 
-[node name="Bubble" type="RigidBody2D"]
+[node name="Bubble" type="CharacterBody2D"]
 position = Vector2(100, 110)
 input_pickable = true
-gravity_scale = 0.0
 script = ExtResource("1_fv2ik")
 metadata/_edit_group_ = true
 
@@ -22,3 +21,8 @@ texture = SubResource("NoiseTexture2D_7wgrx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, -3)
 shape = SubResource("CircleShape2D_gok8g")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

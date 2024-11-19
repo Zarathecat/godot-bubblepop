@@ -24,6 +24,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	print("Score: " + str($Bubble.score))
 	pass
 
 # For now, we make a few random bubbles at the start
@@ -37,9 +38,7 @@ func generate_bubble():
 # by importing them...	
 func get_random_position(win_size):
 	var win_x = int(win_size[0])
-	var win_y = int(win_size[1] + 50)
+	var win_y = int(win_size[1])
 	var rand_pos_x = randi_range(0, win_size[0])
-	return Vector2(rand_pos_x, win_y)
-
-func _on_rigid_body_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	print(event.position)
+	var rand_pos_y = randi_range(0, win_size[1])
+	return Vector2(rand_pos_x, rand_pos_y)
