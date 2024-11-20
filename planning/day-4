@@ -55,3 +55,94 @@ changed it to characterbody2d. This feels silly, but it worked.
 
 Okay, got the basic mechanics and a score printed. Hacky implementation,
 but can make it prettier later.
+
+(later) I didn't have a chance to test it on an android device in
+the end. So I don't know how well it plays there. I've adjusted
+it to pop bubbles on hover on the desktop, though I'm hoping
+it will be more fun on a touchscreen because it's pretty blah on
+my laptop. It still doesn't have any stakes; it's more like a flash
+clicker game or something like that, right now. Well, I was phoning
+it in a bit for this one; right now I'm curious about what's out there
+as far as textures etc go, so I just wanted to get immersed in that,
+but I said I'd try to do a game a day and I
+didn't want to have nothing to show for it today. So I spent most of
+the day reading the game programming patterns book and a really good
+post on godot by one of the devs, started this at
+about 4pm, and then spent most of my evening doing other things, too.
+And then I didn't implement any of the advice from the very sensible
+book I'd been reading, because I was rushing and just wanted to get
+something made. :')
+
+Oh well. Book interesting. Anyway. I ended up making some images for
+this one, using an online sketchpad tool 
+(https://sketch.io/sketchpad/), to make a bubble-pop animation. They
+look surprisingly decent considering they took about 2 seconds to make.
+It took longer to figure out the logic I needed to get them to display
+right (no looping, slow enough for player to see, return to starting
+state), and I usually find it quicker to work out logic than to draw
+pictures. So my animation isn't winning any prizes,
+but I'm still smug about it.
+I think if I made an android game with graphics like these,
+it'd look surprisingly polished, so it's nice to know that's possible.
+
+I guess this turned into more of an art project. I set the alpha channel
+so the bubbles could show some transparency when they overlapped.
+I'm missing my old win7 screensaver, I suppose.
+
+I had some more trouble with signals with this one (that's why the
+logic is so weirdly organised; I moved it all around when trying to
+work out what was wrong. turned out I needed to remember to connect
+the signals when the bubbles were first instantiated... Then I left
+everything in disarray because I was feeling annoyed at wasting time).
+It's easy to think you have a signal connected up when you haven't,
+and hard to debug. Or I don't know a good way to debug it, at least.
+
+It was also quite hard to know what classes would be best to use for
+this. I'm not sure characterbody2d makes much sense for a bubble,
+but none of the others seemed to have the methods I needed inbuilt.
+I wanted it to detect input and I wanted it to be moveable directly
+from the script. Maybe I just missed an obvious candidate.
+
+The logic for this is currently spaghetticode, rather than being
+nicely encapsulated. Well, it's not a complex game; might as well
+make it fun first and then go back. But I'd want to improve that
+before adding more levels or more mechanics, branches, and so on.
+I want to play a sound every time the player pops a bubble, but
+I didn't want to throw audio into the mix while I'd left everything
+else in such a mess, because that's all we need, some attempt to
+play sound blocking the generation of all bubbles... :')
+So that'll go in when I've cleaned up the code (whenever that is).
+I think withholding the opportunity to make audio improvements
+until I clean up is probably a good way to make me clean up, but
+time will tell.
+
+(TODO: make the alpha increase as the timer runs down per-bubble,
+so they fade out as they age)
+
+This one was quite frustrating because it wasn't difficult at all
+to know *what* needed to happen, but fiddly to execute, making
+sure right signal was talking to right node, that sort of thing.
+Dull to make, dull to play, but hopefully good to spend yet MORE
+time fighting with signals, because that's how I'll get good with
+them. This project involved remembering the state of different
+timers and randomisation, which seems like something that's likely
+to come up again. And I also spent time smoothing UX details (eg:
+bubbles having a pop animation distinct from default disappear,
+putting in a pause between bubbles being popped and reappearing,
+setting things to random lengths that differed, so it would all
+feel less jerky to the player. Spent time making small adjustments
+to bubble number (and reminded myself why exported vars are cool)
+and framerate and things like that.) I feel much more confident
+with the animation interface, now; before I felt like I was just
+copying tutorial steps I'd learned by rote, but I didn't use
+a guide for this, today. So I've learned SOMETHING.
+And I just discovered that it will update its imports if you
+add new frames with the same names as the old ones. So that's good
+to know! Every time I need a feature, it has it... <3
+
+All in all, not much to show, but I like that this project looks
+like a flash game. I'll update it some more when I can get access
+to a device with enough memory to actually test it on.
+
+So, end of day 4. 3 games so far. Not quite a game a day, but
+not a million miles off.
