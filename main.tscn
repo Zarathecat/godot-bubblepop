@@ -6,7 +6,21 @@
 [node name="Main" type="Node"]
 script = ExtResource("1_wl7ux")
 bubble_scene = ExtResource("2_25n27")
+starting_bubbles = 7
 
 [node name="Bubble" parent="." instance=ExtResource("2_25n27")]
+
+[node name="Hud" type="CanvasLayer" parent="."]
+
+[node name="Score" type="Label" parent="Hud"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -135.5
+offset_right = 135.5
+offset_bottom = 99.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 72
+text = "Score: 0"
 
 [connection signal="bubble_pop" from="Bubble" to="." method="_on_bubble_bubble_pop"]
