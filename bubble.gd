@@ -40,9 +40,10 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		
 	# here for now while test on desktop	
 	else:
-		hide()
+		$AnimatedSprite2D.play()
 		score += 1
 		bubble_pop.emit()
+		$CollisionShape2D.disabled = true
 		#position = get_random_position(window_size)
 		# Timer before new bubble appears
 		$NewBubbleTimer.wait_time = randf_range(0.5,2)
@@ -57,6 +58,7 @@ func _on_timer_timeout() -> void:
 
 func _on_new_bubble_timer_timeout() -> void:
 	position = get_random_position(window_size)
-	show()
+	$AnimatedSprite2D.set_frame_and_progress(0,0)
+	$CollisionShape2D.disabled = false
 	
 	

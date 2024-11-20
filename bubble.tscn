@@ -1,7 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://klkxrb2o8n35"]
+[gd_scene load_steps=10 format=3 uid="uid://klkxrb2o8n35"]
 
 [ext_resource type="Script" path="res://bubble.gd" id="1_fv2ik"]
-[ext_resource type="Texture2D" uid="uid://bok362xgdxpde" path="res://art/Drawing(1).png" id="2_g1lus"]
+[ext_resource type="Texture2D" uid="uid://ty8trinm187" path="res://art/bubble-full.png" id="2_axuft"]
+[ext_resource type="Texture2D" uid="uid://t04kx7krbhvf" path="res://art/bubble-pop1.png" id="3_jjvrs"]
+[ext_resource type="Texture2D" uid="uid://3t0n45r5pwal" path="res://art/bubble-pop2.png" id="4_im2kt"]
+[ext_resource type="Texture2D" uid="uid://lk17vgpy8jt3" path="res://art/bubble-pop3.png" id="5_c741p"]
+[ext_resource type="Texture2D" uid="uid://qm871pk374kx" path="res://art/bubble-pop4.png" id="6_ak5p1"]
+[ext_resource type="Texture2D" uid="uid://beba2ylps4rh1" path="res://art/bubble-pop5.png" id="7_785ck"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4b61w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_axuft")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jjvrs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_im2kt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_c741p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ak5p1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_785ck")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 40.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gok8g"]
 radius = 55.0091
@@ -11,11 +45,11 @@ position = Vector2(100, 110)
 input_pickable = true
 script = ExtResource("1_fv2ik")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.752941)
 position = Vector2(3.5, 2.14577e-06)
 scale = Vector2(0.776224, 0.805369)
-texture = ExtResource("2_g1lus")
+sprite_frames = SubResource("SpriteFrames_4b61w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, 1)
