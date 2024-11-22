@@ -6,7 +6,7 @@
 [node name="Main" type="Node"]
 script = ExtResource("1_wl7ux")
 bubble_scene = ExtResource("2_25n27")
-starting_bubbles = 7
+starting_bubbles = 20
 
 [node name="Bubble" parent="." instance=ExtResource("2_25n27")]
 
@@ -62,7 +62,7 @@ wait_time = 10.0
 autostart = true
 
 [node name="NewGameTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 2.5
 one_shot = true
 
 [connection signal="bubble_pop" from="Bubble" to="." method="_on_bubble_bubble_pop"]

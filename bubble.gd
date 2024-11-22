@@ -26,31 +26,17 @@ func get_random_position(win_size):
 	return Vector2(rand_pos_x, rand_pos_y)
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton or event is InputEventScreenTouch:
-		hide()
-		score += 1
-		bubble_pop.emit()
-		#position = get_random_position(window_size)
-		# Timer before new bubble appears
-		$NewBubbleTimer.wait_time = randf()
-		$NewBubbleTimer.start()
-		# Timer for the new bubble to hang around
-		$Timer.wait_time = randf_range(1, 5)
-		$Timer.start()
-		
-	# here for now while test on desktop	
-	else:
-		$AnimatedSprite2D.play()
-		score += 1
-		bubble_pop.emit()
-		$CollisionShape2D.disabled = true
-		#position = get_random_position(window_size)
-		# Timer before new bubble appears
-		$NewBubbleTimer.wait_time = randf_range(0.5,2)
-		$NewBubbleTimer.start()
-		# Timer for the new bubble to hang around
-		$Timer.wait_time = randf_range(2.1, 5)
-		$Timer.start()
+	$AnimatedSprite2D.play()
+	score += 1
+	bubble_pop.emit()
+	$CollisionShape2D.disabled = true
+	#position = get_random_position(window_size)
+	# Timer before new bubble appears
+	$NewBubbleTimer.wait_time = randf_range(0.1,1)
+	$NewBubbleTimer.start()
+	# Timer for the new bubble to hang around
+	$Timer.wait_time = randf_range(2.1, 5)
+	$Timer.start()
 
 # Move bubble to a new location if player too slow to hit it in time		
 func _on_timer_timeout() -> void:
