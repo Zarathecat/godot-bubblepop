@@ -21,6 +21,8 @@ var score = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Hide the game over message
+	$Hud/EndText.hide()
 	# make 5 bubbles at the start of the game!
 	for i in range(starting_bubbles):
 		generate_bubble()
@@ -28,7 +30,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# score is calculated per bubble, then combined!
-	pass
+	$Hud/Countdown.text = str(int($EndGameTimer.time_left))
 
 # For now, we make a few random bubbles at the start
 func generate_bubble():
@@ -49,6 +51,24 @@ func get_random_position(win_size):
 	var rand_pos_y = randi_range(0, win_size[1])
 	return Vector2(rand_pos_x, rand_pos_y)
 
+func display_score():
+	$Hud/Score.text = str(score)
+
+
 func _on_bubble_bubble_pop() -> void:
 	score+= 1
-	$Hud/Score.text = "Score: " + str(score)
+	display_score()
+
+func _on_end_game_timer_timeout() -> void:
+	$EndGameTimer.stop()
+	$NewGameTimer.start()
+	$Hud/Score.hide()
+	$Hud/EndText.text ="Game over!\n Score: " + str(score)
+	$Hud/EndText.show()
+
+func _on_new_game_timer_timeout() -> void:
+	score = 0
+	display_score()
+	$Hud/EndText.hide()
+	$Hud/Score.show()
+	$EndGameTimer.start()
